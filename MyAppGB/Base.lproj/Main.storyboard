@@ -191,12 +191,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="lNB-wH-rqz" kind="show" id="OSl-qF-E3p"/>
+                        <segue destination="Mmn-Kw-Ka4" kind="show" id="FKD-WY-sov"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ARN-vn-zMf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1289" y="37"/>
+            <point key="canvasLocation" x="-2186" y="36"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vet-0k-ilC">
@@ -603,6 +603,31 @@
                 <exit id="LzO-7y-3uT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3600.8000000000002" y="-434.03298350824593"/>
+        </scene>
+        <!--Session0 View Controller-->
+        <scene sceneID="aQe-eD-GjT">
+            <objects>
+                <viewController id="Mmn-Kw-Ka4" customClass="Session0ViewController" customModule="MyAppGB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lTR-fc-Dog">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2R0-km-Fv3">
+                                <rect key="frame" x="164" y="318" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="lNB-wH-rqz" kind="show" id="H3i-9d-7xK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="O2p-75-7c8"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ilz-kY-ivr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1316" y="42"/>
         </scene>
         <!--Session View Controller-->
         <scene sceneID="jDF-qj-eLd">
