@@ -9,65 +9,73 @@
 import UIKit
 import Alamofire
 import WebKit
+import SwiftyJSON
 
 class ClientServerViewController2: UIViewController, WKNavigationDelegate {
-    @IBOutlet weak var WKView: WKWebView!
     
+    @IBOutlet weak var UserImage: UIImageView!
+    
+    @IBOutlet weak var UserName: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        WKView.navigationDelegate = self
-        
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "oauth.vk.com"
-        urlComponents.path = "/authorize"
-        urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "6964658"),
-            URLQueryItem(name: "display", value: "mobile"),
-            URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "scope", value: "262150"),
-            URLQueryItem(name: "response_type", value: "token"),
-            URLQueryItem(name: "v", value: "5.95")
-        ]
-        
-        let request = URLRequest(url: urlComponents.url!)
-        
-        WKView.load(request)
-    }
-    
-    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
-        
-        guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment  else {
-            decisionHandler(.allow)
-            return
-        }
-        
-        let params = fragment
-            .components(separatedBy: "&")
-            .map { $0.components(separatedBy: "=") }
-            .reduce([String: String]()) { result, param in
-                var dict = result
-                let key = param[0]
-                let value = param[1]
-                dict[key] = value
-                return dict
-        }
-        
-        let token = params["access_token"]
-        
-        print(token)
-        
-        Alamofire.request("https://api.vk.com/method/users.getFollowers?user_ids=1&fields=bdate&access_token=\(token!)&v=5.95").responseJSON { (response) in
-            let json = response.value as! Dictionary<String, Any>
-            print(json)
-        }
-        
-        decisionHandler(.cancel)
-    }
-    
-    
-    
+        let session = Session.instance
+        let token = session.token
+        Alamofire.request("https://api.vk.com/method/users.get?user_ids=golubeykov&fields=photo_200,sex&access_token=\(token)&v=5.95").responseJSON { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("JSON: \(json)")
+                let arrayNames =  json["response"].arrayValue.map {$0["first_name"].stringValue}
+                print(arrayNames)
+                self.UserName.text = arrayNames.first
+                let arrayNames2 =  json["response"].arrayValue.map {$0["photo_200"].stringValue}
+                let URL_IMAGE = URL(string: "\(arrayNames2.first!)")
+                print(arrayNames2.first)
+                print(URL_IMAGE!)
+                
+                let session = URLSession(configuration: .default)
+                
+                //creating a dataTask
+                let getImageFromUrl = session.dataTask(with: URL_IMAGE!) { (data, response, error) in
+                    
+                    //if there is any error
+                    if let e = error {
+                        //displaying the message
+                        print("Error Occurred: \(e)")
+                        
+                    } else {
+                        //in case of now error, checking wheather the response is nil or not
+                        if (response as? HTTPURLResponse) != nil {
+                            
+                            //checking if the response contains an image
+                            if let imageData = data {
+                                
+                                //getting the image
+                                let image = UIImage(data: imageData)
+                                
+                                //displaying the image
+                                self.UserImage.image = image!
+                                
+                            } else {
+                                print("Image file is currupted")
+                            }
+                        } else {
+                            print("No response from server")
+                        }
+                    }
+                }
+                
+                //starting the download task
+                getImageFromUrl.resume()
+                
+                
+                
+            case .failure(let error):
+                print(error)
+            }
+            
+}
+}
 }
