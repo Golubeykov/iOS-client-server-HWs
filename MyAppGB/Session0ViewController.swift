@@ -1,5 +1,5 @@
 //
-//  SessionViewController.swift
+//  Session0ViewController.swift
 //  MyAppGB
 //
 //  Created by Антон Голубейков on 28/04/2019.
@@ -7,18 +7,22 @@
 //
 
 import UIKit
-
-class SessionViewController: UIViewController {
-    @IBOutlet weak var Token: UILabel!
-    @IBOutlet weak var UserID: UILabel!
+class Session {
+    static let instance = Session()
     
+    private init(){}
+    
+    var Token = ""
+    var UserID = ""
+ 
+}
+class Session0ViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let session = Session.instance
-        Token.text = session.Token
-        UserID.text = String(describing: session.UserID)
-        
-
+        session.Token = "0001"
+        session.UserID = "User0001"
         // Do any additional setup after loading the view.
     }
     
