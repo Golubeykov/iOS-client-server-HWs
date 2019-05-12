@@ -7,6 +7,7 @@ target 'MyAppGB' do
 
   pod 'Alamofire', '~> 4.8.2'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'RealmSwift'
 
   # Pods for MyAppGB
 
