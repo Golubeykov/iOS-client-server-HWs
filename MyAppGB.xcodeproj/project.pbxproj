@@ -22,8 +22,8 @@
 		3A87CCB42232F611005F5616 /* AddGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A87CCB32232F611005F5616 /* AddGroupTableViewController.swift */; };
 		3A982F5B227764B9005D6A72 /* ClientServerViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A982F5A227764B9005D6A72 /* ClientServerViewController2.swift */; };
 		3AA1C3E8224014B500AF5C17 /* HeaderCellClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1C3E7224014B500AF5C17 /* HeaderCellClass.swift */; };
-		3ABE29332274FFCB0074872E /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE29322274FFCB0074872E /* SessionViewController.swift */; };
-		3ABE2935227502700074872E /* Session0ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABE2934227502700074872E /* Session0ViewController.swift */; };
+		3AB751DE227E45080036FB44 /* ClientServerViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB751DD227E45080036FB44 /* ClientServerViewController3.swift */; };
+		3AB751E0227F516A0036FB44 /* ServerGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB751DF227F516A0036FB44 /* ServerGroupsTableViewCell.swift */; };
 		3AE01C112231A6AD00F9DA6B /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE01C102231A6AD00F9DA6B /* FriendsViewController.swift */; };
 		3AE01C132232C41900F9DA6B /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE01C122232C41900F9DA6B /* FriendsTableViewCell.swift */; };
 		3AFAF0A82244265500E34B71 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAF0A72244265500E34B71 /* LaunchViewController.swift */; };
@@ -48,8 +48,8 @@
 		3A87CCB32232F611005F5616 /* AddGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupTableViewController.swift; sourceTree = "<group>"; };
 		3A982F5A227764B9005D6A72 /* ClientServerViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientServerViewController2.swift; sourceTree = "<group>"; };
 		3AA1C3E7224014B500AF5C17 /* HeaderCellClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellClass.swift; sourceTree = "<group>"; };
-		3ABE29322274FFCB0074872E /* SessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
-		3ABE2934227502700074872E /* Session0ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session0ViewController.swift; sourceTree = "<group>"; };
+		3AB751DD227E45080036FB44 /* ClientServerViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientServerViewController3.swift; sourceTree = "<group>"; };
+		3AB751DF227F516A0036FB44 /* ServerGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerGroupsTableViewCell.swift; sourceTree = "<group>"; };
 		3AE01C102231A6AD00F9DA6B /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		3AE01C122232C41900F9DA6B /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		3AFAF0A72244265500E34B71 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -96,10 +96,9 @@
 				3A044BC622357BFF00C0D0E5 /* LikeButton.swift */,
 				3A73ECD9222DA118007110CE /* ViewController.swift */,
 				3A73ECDB222DA118007110CE /* Main.storyboard */,
+				3AB751DD227E45080036FB44 /* ClientServerViewController3.swift */,
 				3A982F5A227764B9005D6A72 /* ClientServerViewController2.swift */,
 				3A74D99E2276250B00BD8189 /* ClienServerViewController.swift */,
-				3ABE2934227502700074872E /* Session0ViewController.swift */,
-				3ABE29322274FFCB0074872E /* SessionViewController.swift */,
 				3AFAF0A72244265500E34B71 /* LaunchViewController.swift */,
 				3A044BC422344F0900C0D0E5 /* MyFriendViewController.swift */,
 				3A73ECDE222DA11A007110CE /* Assets.xcassets */,
@@ -112,6 +111,7 @@
 				3A87CCAD2232E57D005F5616 /* GroupsCollectionViewCell.swift */,
 				3A73ECE0222DA11A007110CE /* LaunchScreen.storyboard */,
 				3A73ECE3222DA11A007110CE /* Info.plist */,
+				3AB751DF227F516A0036FB44 /* ServerGroupsTableViewCell.swift */,
 			);
 			path = MyAppGB;
 			sourceTree = "<group>";
@@ -235,12 +235,18 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyAppGB/Pods-MyAppGB-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -258,14 +264,14 @@
 				3A87CCAE2232E57D005F5616 /* GroupsCollectionViewCell.swift in Sources */,
 				3A73ECDA222DA118007110CE /* ViewController.swift in Sources */,
 				3AE01C112231A6AD00F9DA6B /* FriendsViewController.swift in Sources */,
+				3AB751E0227F516A0036FB44 /* ServerGroupsTableViewCell.swift in Sources */,
 				3A87CCB42232F611005F5616 /* AddGroupTableViewController.swift in Sources */,
 				3A87CCAC2232E55B005F5616 /* GroupsViewController.swift in Sources */,
 				3A87CCAA2232CA0D005F5616 /* AddFriendTableViewController.swift in Sources */,
 				3AFAF0A82244265500E34B71 /* LaunchViewController.swift in Sources */,
-				3ABE2935227502700074872E /* Session0ViewController.swift in Sources */,
 				3A982F5B227764B9005D6A72 /* ClientServerViewController2.swift in Sources */,
-				3ABE29332274FFCB0074872E /* SessionViewController.swift in Sources */,
 				3A74D99F2276250B00BD8189 /* ClienServerViewController.swift in Sources */,
+				3AB751DE227E45080036FB44 /* ClientServerViewController3.swift in Sources */,
 				3AA1C3E8224014B500AF5C17 /* HeaderCellClass.swift in Sources */,
 				3A73ECD8222DA118007110CE /* AppDelegate.swift in Sources */,
 				3A044BC722357BFF00C0D0E5 /* LikeButton.swift in Sources */,
@@ -420,6 +426,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6S824DCXB;
 				INFOPLIST_FILE = MyAppGB/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,7 +435,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -441,6 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6S824DCXB;
 				INFOPLIST_FILE = MyAppGB/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -449,7 +457,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

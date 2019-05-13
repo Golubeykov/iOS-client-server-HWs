@@ -2,9 +2,21 @@
 import UIKit
 import Alamofire
 import WebKit
+import SwiftyJSON
+
+
+
+class Session {
+    
+    static let instance = Session()
+    
+    private init(){}
+    var token = ""
+}
 
 class ClienServerViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var WKView: WKWebView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,19 +60,13 @@ class ClienServerViewController: UIViewController, WKNavigationDelegate {
         }
         
         let token = params["access_token"]
-        
+        let session = Session.instance
+        session.token = token!
         print(token)
         
-        Alamofire.request("https://api.vk.com/method/users.get?user_ids=210700286&fields=bdate&access_token=\(token!)&v=5.95").responseJSON { (response) in
-            let json = response.value as! Dictionary<String, Any>
-            let arr = json["response"] as! Array<Any>
-            let respons = arr.first as! Dictionary<String, Any>
-            print(respons["first_name"])
-        }
         
         decisionHandler(.cancel)
     }
-
 
 
 }
